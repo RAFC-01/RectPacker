@@ -5,27 +5,6 @@ ctx.imageSmoothingEnabled = false;
 
 const rects = [];
 
-const stream = canvas.captureStream(30); // 60 FPS
-
-const recorder = new MediaRecorder(stream, {
-    mimeType: "video/webm"
-});
-
-const chunks = [];
-
-recorder.ondataavailable = e => chunks.push(e.data);
-
-recorder.onstop = () => {
-    const blob = new Blob(chunks, { type: "video/webm" });
-    const url = URL.createObjectURL(blob);
-
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "packing.webm";
-    a.click();
-};
-
-
 function getRandomNumber(from, to){
     return Math.floor(Math.random() * (to - from + 1)) + from;
 }
@@ -33,9 +12,9 @@ function getRandomColor(){
     return '#'+Math.floor(Math.random()*16777215).toString(16);
 }
 
-const rectsToGenerate = 7_000;
+const rectsToGenerate = 2_000;
 const MAX_RECT_SIZE = 15;
-const SCALE = 1;
+const SCALE = 2;
 
 function generateRandomRects(){
     for (let i = 0; i < rectsToGenerate; i++){
@@ -57,7 +36,7 @@ async function drawResult(rects){
     G_isPlaying = true;
     for (let i = 0; i < rects.length; i++){
         const rect = rects[i];
-        if (i % 10 == 0) await G_delayMs(1);
+        if (i % 5 == 0) await G_delayMs(1);
 
         ctx.fillStyle = getRandomColor().replace('f', '0');
         ctx.fillRect(rect.x * SCALE, rect.y * SCALE, rect.width * SCALE, rect.height * SCALE);
@@ -98,9 +77,5 @@ document.getElementById('play').addEventListener('click', () => {
 
 async function play(){
     clearCanvas();
-    recorder.start();
-
     await drawResult(lastResult.rects);
-
-    recorder.stop();
 }
