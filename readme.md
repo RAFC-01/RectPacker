@@ -63,7 +63,7 @@ Average packing times (approx.):
 
 - 1,000 rectangles → ~182 ms  
 - 10,000 rectangles → ~303 ms  
-- 1,000,000 rectangles → ~6911 ms  
+- 100,000 rectangles → ~6911 ms  
 
 These values depend heavily on:
 - rectangle distribution

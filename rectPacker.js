@@ -404,6 +404,9 @@ class RectPacker{
      *
      * If omitted, the algorithm is automatically selected based on input size.
      *
+     * @param {number} [props.padding]
+     * Overwrites the padding
+     * 
      * @param {(state: {msg?: string, size?: number}) => void} [getState]
      * Optional callback invoked during packing to report progress.
      * Used for logging/debug/UI updates.
@@ -417,6 +420,8 @@ class RectPacker{
         let maxSide = 0;
         let minWidth = 0; // the biggest rect width is the smallest possible rect that fits all rects width
     
+        if (props.padding !== undefined) this.padding = props.padding;
+
         this.rectLen = rects.length;
     
         rects.sort((a, b) => {

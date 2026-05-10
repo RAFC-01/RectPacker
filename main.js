@@ -12,9 +12,9 @@ function getRandomColor(){
     return '#'+Math.floor(Math.random()*16777215).toString(16);
 }
 
-const rectsToGenerate = 2_000;
-const MAX_RECT_SIZE = 15;
-const SCALE = 2;
+const rectsToGenerate = 100_000;
+const MAX_RECT_SIZE = 30;
+const SCALE = 0.3;
 
 function generateRandomRects(){
     for (let i = 0; i < rectsToGenerate; i++){
