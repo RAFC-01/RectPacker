@@ -137,7 +137,7 @@ Finished!
 ![packed](./assets/packed-100K.png)
 
 ### MaxRects
-![maxrects](./assets/maxrects.gif)
+![maxrects](./assets/maxrects.gif) 
 
 ### Guillotine
 ![guillotine](./assets/guillotine.gif)
